@@ -1,0 +1,668 @@
+/* Andromeda CMS — Admin Panel styles. Scoped under .alc-admin-* classes and
+   loaded only when /admin/* is mounted, so it never touches the public
+   site's styles/global.css. Reuses the public site's design tokens
+   (tokens.css is already global) for brand-consistent theming. */
+
+.alc-admin-shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--alc-void-black);
+}
+
+/* ---------- Sidebar ---------- */
+
+.alc-admin-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--alc-deep-space-indigo);
+  border-right: 1px solid rgba(245, 247, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+}
+
+.alc-admin-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--alc-font-display);
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 8px 24px;
+  color: var(--alc-signal-white);
+}
+
+.alc-admin-sidebar__brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--alc-gradient-andromeda-drift);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.alc-admin-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.alc-admin-sidebar__section-label {
+  margin: 18px 8px 6px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--alc-slate);
+}
+
+.alc-admin-nav-link {
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--alc-slate);
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.alc-admin-nav-link:hover {
+  background: rgba(245, 247, 255, 0.06);
+  color: var(--alc-signal-white);
+}
+
+.alc-admin-nav-link--active {
+  background: rgba(108, 76, 227, 0.18);
+  color: var(--alc-signal-white);
+  font-weight: 600;
+}
+
+/* ---------- Header / main ---------- */
+
+.alc-admin-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.alc-admin-header {
+  height: 64px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  border-bottom: 1px solid rgba(245, 247, 255, 0.08);
+}
+
+.alc-admin-header__site-link {
+  font-size: 13px;
+  color: var(--alc-ion-cyan);
+}
+
+.alc-admin-header__account {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.alc-admin-header__email {
+  font-size: 13px;
+  color: var(--alc-slate);
+}
+
+.alc-admin-content {
+  flex: 1;
+  padding: 28px 32px 60px;
+  overflow-y: auto;
+}
+
+/* ---------- Page header / typography ---------- */
+
+.alc-admin-page__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.alc-admin-page__subtitle {
+  color: var(--alc-slate);
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+
+.alc-admin-section-title {
+  font-size: var(--alc-fs-h3);
+  margin: 32px 0 14px;
+}
+
+.alc-admin-empty-state {
+  color: var(--alc-slate);
+  padding: 32px 0;
+}
+
+/* ---------- Stat cards / dashboard ---------- */
+
+.alc-admin-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.alc-admin-stat-card {
+  background: var(--alc-deep-space-indigo);
+  border: 1px solid rgba(245, 247, 255, 0.08);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alc-admin-stat-card__value {
+  font-family: var(--alc-font-display);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.alc-admin-stat-card__label {
+  color: var(--alc-slate);
+  font-size: 13px;
+}
+
+.alc-admin-module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.alc-admin-module-card {
+  background: var(--alc-deep-space-indigo);
+  border: 1px solid rgba(245, 247, 255, 0.08);
+  border-radius: 12px;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: var(--alc-signal-white);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.alc-admin-module-card:hover {
+  border-color: var(--alc-andromeda-violet);
+  transform: translateY(-1px);
+}
+
+.alc-admin-module-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.alc-admin-module-card h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.alc-admin-module-card p {
+  font-size: 13px;
+  color: var(--alc-slate);
+  margin: 0;
+}
+
+.alc-admin-module-card__count {
+  font-size: 12px;
+  color: var(--alc-ion-cyan);
+  margin-top: auto;
+}
+
+.alc-admin-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(41, 227, 217, 0.15);
+  color: var(--alc-ion-cyan);
+}
+
+/* ---------- Table ---------- */
+
+.alc-admin-table-wrap {
+  background: var(--alc-deep-space-indigo);
+  border: 1px solid rgba(245, 247, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.alc-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.alc-admin-table th,
+.alc-admin-table td {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(245, 247, 255, 0.06);
+}
+
+.alc-admin-table th {
+  text-transform: capitalize;
+  color: var(--alc-slate);
+  font-weight: 500;
+  background: rgba(245, 247, 255, 0.03);
+}
+
+.alc-admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.alc-admin-table__actions-col {
+  width: 160px;
+}
+
+.alc-admin-table__actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ---------- Buttons ---------- */
+
+.alc-admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: filter 0.15s, background-color 0.15s;
+}
+
+.alc-admin-btn--small {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.alc-admin-btn--block {
+  width: 100%;
+}
+
+.alc-admin-btn--primary {
+  background: var(--alc-gradient-andromeda-drift);
+  color: var(--alc-signal-white);
+}
+
+.alc-admin-btn--primary:hover {
+  filter: brightness(1.08);
+}
+
+.alc-admin-btn--ghost {
+  background: transparent;
+  border-color: rgba(245, 247, 255, 0.16);
+  color: var(--alc-signal-white);
+}
+
+.alc-admin-btn--ghost:hover {
+  background: rgba(245, 247, 255, 0.06);
+}
+
+.alc-admin-btn--danger {
+  background: rgba(230, 60, 140, 0.12);
+  color: var(--alc-nebula-magenta);
+  border-color: rgba(230, 60, 140, 0.3);
+}
+
+.alc-admin-btn--danger:hover {
+  background: rgba(230, 60, 140, 0.2);
+}
+
+.alc-admin-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- Forms ---------- */
+
+.alc-admin-form {
+  background: var(--alc-deep-space-indigo);
+  border: 1px solid rgba(245, 247, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 880px;
+}
+
+.alc-admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+  margin-top: 8px;
+}
+
+.alc-admin-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.alc-admin-form-field--wide {
+  grid-column: 1 / -1;
+}
+
+.alc-admin-form-field--checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.alc-admin-form-field label {
+  font-size: 13px;
+  color: var(--alc-slate);
+}
+
+.alc-admin-checkbox-label {
+  font-size: 13px;
+  color: var(--alc-slate);
+}
+
+.alc-admin-form input[type="text"],
+.alc-admin-form input[type="number"],
+.alc-admin-form input[type="date"],
+.alc-admin-form textarea,
+.alc-admin-form select,
+.alc-admin-login input {
+  background: var(--alc-void-black);
+  border: 1px solid rgba(245, 247, 255, 0.14);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--alc-signal-white);
+  font-family: var(--alc-font-body);
+  font-size: 14px;
+}
+
+.alc-admin-form input:focus,
+.alc-admin-form textarea:focus,
+.alc-admin-form select:focus,
+.alc-admin-login input:focus {
+  outline: 2px solid var(--alc-andromeda-violet);
+  outline-offset: 1px;
+}
+
+.alc-admin-form input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.alc-admin-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(245, 247, 255, 0.08);
+}
+
+.alc-admin-form__error {
+  background: rgba(230, 60, 140, 0.12);
+  border: 1px solid rgba(230, 60, 140, 0.3);
+  color: #ff9dc4;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.alc-admin-form-row {
+  display: flex;
+  gap: 16px;
+  margin: 14px 0;
+}
+
+.alc-admin-form-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--alc-slate);
+  flex: 1;
+}
+
+.alc-admin-field-label {
+  display: block;
+  font-size: 13px;
+  color: var(--alc-slate);
+  margin-bottom: 8px;
+}
+
+/* ---------- Image manager ---------- */
+
+.alc-admin-image-manager {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(245, 247, 255, 0.08);
+}
+
+.alc-admin-image-preview {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(245, 247, 255, 0.04);
+  border: 1px solid rgba(245, 247, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.alc-admin-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.alc-admin-image-preview__empty {
+  color: var(--alc-slate);
+  font-size: 13px;
+}
+
+.alc-admin-image-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ---------- Modal ---------- */
+
+.alc-admin-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 7, 13, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.alc-admin-modal {
+  background: var(--alc-deep-space-indigo);
+  border: 1px solid rgba(245, 247, 255, 0.12);
+  border-radius: 14px;
+  padding: 24px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.alc-admin-modal--wide {
+  max-width: 640px;
+}
+
+.alc-admin-modal--small {
+  max-width: 380px;
+}
+
+.alc-admin-modal__message {
+  color: var(--alc-slate);
+  font-size: 14px;
+}
+
+.alc-admin-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* ---------- Cropper ---------- */
+
+.alc-admin-cropper-frame {
+  position: relative;
+  margin: 0 auto;
+  max-width: 100%;
+  background: #000;
+  cursor: crosshair;
+  user-select: none;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.alc-admin-cropper-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.alc-admin-cropper-selection {
+  position: absolute;
+  border: 2px solid var(--alc-ion-cyan);
+  background: rgba(41, 227, 217, 0.15);
+  pointer-events: none;
+}
+
+.alc-admin-cropper-hint {
+  font-size: 12px;
+  color: var(--alc-slate);
+  margin: 10px 0 0;
+}
+
+/* ---------- Toasts ---------- */
+
+.alc-admin-toast-stack {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2000;
+}
+
+.alc-admin-toast {
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  max-width: 340px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.alc-admin-toast--success {
+  background: rgba(61, 220, 132, 0.15);
+  border: 1px solid rgba(61, 220, 132, 0.35);
+  color: #8ff0b6;
+}
+
+.alc-admin-toast--error {
+  background: rgba(230, 60, 140, 0.15);
+  border: 1px solid rgba(230, 60, 140, 0.35);
+  color: #ff9dc4;
+}
+
+/* ---------- Login ---------- */
+
+.alc-admin-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--alc-gradient-andromeda-drift);
+  padding: 20px;
+}
+
+.alc-admin-login__card {
+  background: var(--alc-deep-space-indigo);
+  border: 1px solid rgba(245, 247, 255, 0.12);
+  border-radius: 16px;
+  padding: 36px;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.alc-admin-login__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--alc-font-display);
+  font-weight: 600;
+}
+
+.alc-admin-login h1 {
+  font-size: 22px;
+  margin: 4px 0 0;
+}
+
+.alc-admin-login__subtitle {
+  color: var(--alc-slate);
+  font-size: 13px;
+  margin: 0 0 4px;
+}
+
+.alc-admin-login label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--alc-slate);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .alc-admin-shell {
+    flex-direction: column;
+  }
+  .alc-admin-sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    padding: 12px;
+  }
+  .alc-admin-sidebar__nav {
+    flex-direction: row;
+  }
+  .alc-admin-sidebar__section-label {
+    display: none;
+  }
+  .alc-admin-content {
+    padding: 20px 16px 40px;
+  }
+  .alc-admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

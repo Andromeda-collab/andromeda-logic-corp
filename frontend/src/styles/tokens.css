@@ -1,0 +1,53 @@
+/*
+  Andromeda Logic Corp — Design Tokens
+  Source: Technical Specification Section 7 (Visual Design System)
+  "Structured Cosmos" — dark-canvas-first, telemetry-grid motif,
+  Andromeda Drift gradient rationed to CTAs / active states / NOVA chrome only.
+*/
+
+:root {
+  /* Core palette — Section 7.2 */
+  --alc-void-black: #05070d;
+  --alc-deep-space-indigo: #0b1026;
+  --alc-andromeda-violet: #6c4ce3;
+  --alc-nebula-magenta: #e63c8c;
+  --alc-ion-cyan: #29e3d9;
+  --alc-solar-amber: #ffb648;
+  --alc-signal-white: #f5f7ff;
+  --alc-slate: #8a93b8;
+
+  /* Semantic status colors — Section 7.2 */
+  --alc-status-flight-proven: #3ddc84;
+  --alc-status-in-development: #ffb648;
+  --alc-status-roadmap: #8a93b8;
+
+  /* Signature gradient — "Andromeda Drift" */
+  --alc-gradient-andromeda-drift: linear-gradient(
+    135deg,
+    #0b1026 0%,
+    #6c4ce3 45%,
+    #e63c8c 78%,
+    #29e3d9 100%
+  );
+
+  /* Typography — Section 7.3 */
+  --alc-font-display: "Space Grotesk", sans-serif;
+  --alc-font-body: "Inter", sans-serif;
+  --alc-font-mono: "JetBrains Mono", "IBM Plex Mono", monospace;
+
+  /* Type scale (desktop) — 64/48/32/24/18/16/14 on 1.25 modular ratio */
+  --alc-fs-display-xl: 64px;
+  --alc-fs-display-l: 48px;
+  --alc-fs-h1: 32px;
+  --alc-fs-h2: 24px;
+  --alc-fs-h3: 18px;
+  --alc-fs-body: 16px;
+  --alc-fs-caption: 14px;
+
+  /* Spacing / grid — Section 7.7 */
+  --alc-space-unit: 8px;
+  --alc-content-max-width: 1280px;
+  --alc-rhythm-desktop: 96px;
+  --alc-rhythm-tablet: 64px;
+  --alc-rhythm-mobile: 40px;
+}

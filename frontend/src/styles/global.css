@@ -1,0 +1,1307 @@
+@import "./tokens.css";
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--alc-void-black);
+  color: var(--alc-signal-white);
+  font-family: var(--alc-font-body);
+  font-size: var(--alc-fs-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--alc-font-display);
+  line-height: 1.15;
+  margin: 0 0 var(--alc-space-unit) 0;
+}
+
+a {
+  color: var(--alc-andromeda-violet);
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.alc-container {
+  max-width: var(--alc-content-max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 480px) {
+  .alc-container {
+    padding: 0 16px;
+  }
+}
+
+/* Gradient surface — reserved per usage rule in Section 7.2:
+   primary CTA, hero wash, active nav state, NOVA chrome only. */
+.alc-gradient-surface {
+  background: var(--alc-gradient-andromeda-drift);
+}
+
+/* ============================================================
+   SECTION RHYTHM
+   ============================================================ */
+
+.alc-section {
+  padding: var(--alc-rhythm-mobile) 0;
+}
+
+@media (min-width: 768px) {
+  .alc-section {
+    padding: var(--alc-rhythm-tablet) 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .alc-section {
+    padding: var(--alc-rhythm-desktop) 0;
+  }
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.alc-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--alc-deep-space-indigo);
+  border-bottom: 1px solid rgba(138, 147, 184, 0.2);
+}
+
+.alc-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  gap: 24px;
+}
+
+.alc-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--alc-signal-white);
+  font-family: var(--alc-font-display);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.alc-header__logo-icon {
+  height: 68px;
+  width: auto;
+}
+
+.alc-header__nav {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+
+.alc-header__nav a {
+  color: var(--alc-slate);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.alc-header__nav a:hover {
+  color: var(--alc-signal-white);
+}
+
+/* Tablet: shrink logo text, tighten nav gaps */
+@media (max-width: 900px) {
+  .alc-header__logo span {
+    display: none; /* keep just the icon mark to save space */
+  }
+  .alc-header__nav {
+    gap: 12px;
+  }
+  .alc-header__nav a {
+    font-size: 13px;
+  }
+}
+
+/* Mobile: stack into a compact bar; nav scrolls horizontally rather
+   than wrapping, so the header height stays predictable.
+   TODO: replace with a proper hamburger + slide-out mega-menu drawer. */
+@media (max-width: 640px) {
+  .alc-header__inner {
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    gap: 10px;
+  }
+  .alc-header__logo-icon {
+    height: 38px;
+  }
+  .alc-header__nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .alc-header__nav::-webkit-scrollbar {
+    display: none;
+  }
+  .alc-button--primary {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.alc-button {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  font-size: 14px;
+  text-align: center;
+}
+
+.alc-button--primary {
+  background: var(--alc-gradient-andromeda-drift);
+  color: var(--alc-signal-white);
+}
+
+.alc-button--secondary {
+  background: transparent;
+  color: var(--alc-signal-white);
+  border: 1px solid var(--alc-slate);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.alc-hero {
+  padding: 64px 0;
+  text-align: center;
+}
+
+.alc-hero h1 {
+  font-size: var(--alc-fs-display-l);
+}
+
+.alc-hero__subtitle {
+  max-width: 640px;
+  margin: 16px auto 32px;
+  color: var(--alc-slate);
+}
+
+.alc-hero__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .alc-hero {
+    padding: 40px 0;
+  }
+  .alc-hero h1 {
+    font-size: 32px; /* steps down from display-l per Section 7.3 mobile tier */
+  }
+  .alc-hero__subtitle {
+    font-size: 14px;
+    padding: 0 8px;
+  }
+  .alc-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .alc-hero__actions .alc-button {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   GRIDS (proof tiles, pillars, personas)
+   ============================================================ */
+
+.alc-proof-grid,
+.alc-pillar-grid,
+.alc-persona-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+@media (max-width: 640px) {
+  .alc-proof-grid,
+  .alc-pillar-grid,
+  .alc-persona-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ============================================================
+   HORIZONTAL RAIL (products)
+   ============================================================ */
+
+.alc-rail {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  margin-top: 24px;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+
+.alc-rail .alc-card {
+  min-width: 240px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 480px) {
+  .alc-rail .alc-card {
+    min-width: 200px;
+  }
+}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+
+.alc-card {
+  background: var(--alc-deep-space-indigo);
+  border-radius: 12px;
+  padding: 24px;
+  display: block;
+  color: var(--alc-signal-white);
+}
+
+.alc-card--persona {
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Admin-managed content image (Products/Missions/Solutions cards) — only
+   rendered when the record has one, so cards without an image are unchanged. */
+.alc-card__image {
+  display: block;
+  width: calc(100% + 48px);
+  max-width: none;
+  margin: -24px -24px 16px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+@media (max-width: 480px) {
+  .alc-card {
+    padding: 18px;
+  }
+
+  .alc-card__image {
+    width: calc(100% + 36px);
+    margin: -18px -18px 14px;
+  }
+}
+
+/* ============================================================
+   PROOF TILES
+   ============================================================ */
+
+.alc-proof-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--alc-deep-space-indigo);
+  color: var(--alc-signal-white);
+}
+
+.alc-proof-tile__stat {
+  font-family: var(--alc-font-display);
+  font-size: var(--alc-fs-h1);
+  margin: 8px 0 4px;
+}
+
+@media (max-width: 480px) {
+  .alc-proof-tile__stat {
+    font-size: 24px;
+  }
+}
+
+/* ============================================================
+   STATUS BADGES
+   ============================================================ */
+
+.alc-status-badge {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.alc-status-badge--flight-proven {
+  background: var(--alc-status-flight-proven);
+  color: #05070d;
+}
+
+.alc-status-badge--in-development {
+  background: var(--alc-status-in-development);
+  color: #05070d;
+}
+
+.alc-status-badge--roadmap {
+  background: var(--alc-status-roadmap);
+  color: #05070d;
+}
+
+/* ============================================================
+   CONVERSION BAND
+   ============================================================ */
+
+.alc-conversion-band {
+  text-align: center;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.alc-footer {
+  background: var(--alc-void-black);
+  border-top: 1px solid rgba(138, 147, 184, 0.2);
+  padding-top: 48px;
+  margin-top: 64px;
+}
+
+.alc-footer__brand {
+  margin-bottom: 32px;
+}
+
+.alc-footer__logo {
+  height: 140px;
+  width: auto;
+}
+
+.alc-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 32px;
+  padding-bottom: 32px;
+}
+
+.alc-footer__grid h3 {
+  font-size: 14px;
+  color: var(--alc-slate);
+  margin-bottom: 12px;
+}
+
+.alc-footer__grid a {
+  display: block;
+  color: var(--alc-signal-white);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.alc-footer__bottom {
+  border-top: 1px solid rgba(138, 147, 184, 0.2);
+  padding: 16px 24px;
+  font-size: 12px;
+  color: var(--alc-slate);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .alc-footer {
+    padding-top: 32px;
+    margin-top: 40px;
+    text-align: center;
+  }
+  .alc-footer__logo {
+    height: 100px;
+    margin: 0 auto;
+  }
+  .alc-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    text-align: left;
+  }
+}
+
+@media (max-width: 400px) {
+  .alc-footer__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   COOKIE CONSENT BANNER
+   ============================================================ */
+
+.alc-cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--alc-deep-space-indigo);
+  border-top: 1px solid rgba(138, 147, 184, 0.3);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.alc-cookie-consent p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--alc-slate);
+  flex: 1;
+  min-width: 200px;
+}
+
+.alc-cookie-consent__actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.alc-cookie-consent__actions button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--alc-slate);
+  background: transparent;
+  color: var(--alc-signal-white);
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .alc-cookie-consent {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 16px;
+  }
+  .alc-cookie-consent__actions {
+    width: 100%;
+  }
+  .alc-cookie-consent__actions button {
+    flex: 1;
+  }
+}
+
+/* ============================================================
+   NOVA LAUNCHER & PANEL
+   ============================================================ */
+
+.alc-nova-launcher {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 60;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  color: var(--alc-signal-white);
+  font-family: var(--alc-font-display);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.alc-nova-panel {
+  position: fixed;
+  bottom: 92px;
+  right: 24px;
+  z-index: 60;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  height: 480px;
+  max-height: calc(100vh - 140px);
+  background: var(--alc-deep-space-indigo);
+  border: 1px solid rgba(108, 76, 227, 0.4);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.alc-nova-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--alc-gradient-andromeda-drift);
+  color: var(--alc-signal-white);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.alc-nova-panel__header button {
+  background: none;
+  border: none;
+  color: var(--alc-signal-white);
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.alc-nova-panel__body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: var(--alc-slate);
+}
+
+.alc-nova-panel__input {
+  border-top: 1px solid rgba(138, 147, 184, 0.2);
+  padding: 12px;
+}
+
+.alc-nova-panel__input input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(138, 147, 184, 0.3);
+  background: var(--alc-void-black);
+  color: var(--alc-signal-white);
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .alc-nova-launcher {
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    font-size: 10px;
+  }
+  .alc-nova-panel {
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 70vh;
+    max-height: 70vh;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+/* ============================================================
+   MISSION CONSULTATION FORM
+   ============================================================ */
+
+.alc-contact-intro {
+  color: var(--alc-slate);
+  margin-bottom: 32px;
+}
+
+.alc-form {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.alc-form__fieldset {
+  border: 1px solid rgba(138, 147, 184, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.alc-form__fieldset legend {
+  padding: 0 8px;
+  font-family: var(--alc-font-display);
+  font-size: 14px;
+}
+
+.alc-form__radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.alc-form__radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.alc-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .alc-form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.alc-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--alc-slate);
+}
+
+.alc-form-field input,
+.alc-form-field select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(138, 147, 184, 0.3);
+  background: var(--alc-deep-space-indigo);
+  color: var(--alc-signal-white);
+  font-size: 14px;
+}
+
+.alc-form-field input[type="file"] {
+  padding: 8px;
+}
+
+.alc-form__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--alc-slate);
+}
+
+.alc-form__checkbox input {
+  margin-top: 3px;
+}
+
+.alc-form__checkbox a {
+  color: var(--alc-andromeda-violet);
+}
+
+.alc-form__error {
+  color: var(--alc-nebula-magenta);
+  font-size: 14px;
+}
+
+.alc-contact-success {
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.alc-contact-success p {
+  color: var(--alc-slate);
+  margin-bottom: 24px;
+}
+
+.alc-rail--wrap {
+  flex-wrap: wrap;
+  overflow-x: visible;
+}
+.alc-rail--wrap .alc-card {
+  min-width: 260px;
+  flex: 1 1 260px;
+}
+
+.alc-card--persona {
+  text-align: left;
+}
+.alc-card--persona p {
+  color: var(--alc-slate);
+  font-weight: 400;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+
+/* ============================================================
+   CAREERS
+   ============================================================ */
+
+.alc-job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.alc-job-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.alc-job-card__meta {
+  color: var(--alc-slate);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.alc-job-back-link {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--alc-slate);
+  font-size: 14px;
+}
+
+.alc-job-description {
+  color: var(--alc-slate);
+  max-width: 640px;
+  margin: 16px 0 24px;
+}
+
+/* ============================================================
+   NEWSROOM
+   ============================================================ */
+
+.alc-press-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.alc-press-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--alc-slate);
+  margin-bottom: 8px;
+}
+
+.alc-press-card p {
+  color: var(--alc-slate);
+  margin-top: 8px;
+}
+
+
+/* ============================================================
+   CASE STUDIES & MISSION STORIES
+   ============================================================ */
+
+.alc-mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.alc-mission-card p {
+  color: var(--alc-slate);
+  margin-top: 8px;
+}
+
+.alc-mission-summary {
+  color: var(--alc-slate);
+  max-width: 640px;
+  margin-bottom: 32px;
+}
+
+.alc-mission-block {
+  max-width: 640px;
+  margin-bottom: 24px;
+}
+
+.alc-mission-block h3 {
+  font-size: var(--alc-fs-h3);
+  color: var(--alc-ion-cyan);
+  margin-bottom: 6px;
+}
+
+.alc-mission-block p {
+  color: var(--alc-slate);
+}
+
+/* ============================================================
+   ABOUT US
+   ============================================================ */
+
+.alc-about-block {
+  max-width: 640px;
+  margin-bottom: 32px;
+}
+
+.alc-about-block h3 {
+  font-size: var(--alc-fs-h3);
+  color: var(--alc-ion-cyan);
+  margin-bottom: 8px;
+}
+
+.alc-about-block p {
+  color: var(--alc-slate);
+}
+
+/* ============================================================
+   VIKRAM-STYLE PINNED SCROLLYTELLING SECTION
+   ============================================================ */
+
+.alc-vikram-wrapper {
+  position: relative;
+  height: 400vh;
+}
+
+.alc-vikram-wrapper--static {
+  height: auto;
+}
+
+.alc-vikram-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.alc-vikram-wrapper--static .alc-vikram-sticky {
+  position: static;
+  height: auto;
+  padding: var(--alc-rhythm-mobile) 0;
+}
+
+.alc-vikram-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  align-items: center;
+  width: 100%;
+}
+
+.alc-vikram-index {
+  display: block;
+  font-family: var(--alc-font-mono);
+  color: var(--alc-ion-cyan);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.alc-vikram-text h2 {
+  font-size: var(--alc-fs-display-l);
+  margin-bottom: 16px;
+}
+
+.alc-vikram-text p {
+  color: var(--alc-slate);
+  margin-bottom: 20px;
+  max-width: 420px;
+}
+
+.alc-vikram-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alc-vikram-bullets li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--alc-signal-white);
+}
+
+.alc-vikram-bullets li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--alc-ion-cyan);
+  flex-shrink: 0;
+}
+
+.alc-vikram-fade {
+  animation: alc-vikram-fade-in 0.5s ease;
+}
+
+@keyframes alc-vikram-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alc-vikram-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alc-vikram-main-image {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: 16px;
+}
+
+.alc-vikram-accent {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  width: 42%;
+  max-width: 180px;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid var(--alc-ion-cyan);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  animation: alc-vikram-fade-in 0.5s ease;
+}
+
+@media (max-width: 900px) {
+  .alc-vikram-wrapper {
+    height: auto;
+    padding: var(--alc-rhythm-mobile) 0;
+  }
+  .alc-vikram-sticky {
+    position: static;
+    height: auto;
+  }
+  .alc-vikram-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+  .alc-vikram-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .alc-vikram-bullets {
+    align-items: center;
+  }
+  .alc-vikram-main-image {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .alc-vikram-accent {
+    width: 35%;
+    bottom: -16px;
+    right: -8px;
+  }
+}
+
+.alc-form-field textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(138, 147, 184, 0.3);
+  background: var(--alc-deep-space-indigo);
+  color: var(--alc-signal-white);
+  font-size: 14px;
+  font-family: var(--alc-font-body);
+  resize: vertical;
+}
+
+/* ============================================================
+   TRUST, COMPLIANCE & EXPORT CONTROL
+   ============================================================ */
+
+.alc-cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.alc-cert-card h3 {
+  font-size: var(--alc-fs-h3);
+  margin-top: 8px;
+}
+
+/* ============================================================
+   ABOUT US — LEADERSHIP, HERITAGE, LOCATIONS
+   ============================================================ */
+
+.alc-leadership-grid,
+.alc-locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.alc-leadership-card p,
+.alc-locations-grid p {
+  color: var(--alc-slate);
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.alc-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  border-left: 2px solid rgba(138, 147, 184, 0.3);
+  padding-left: 20px;
+}
+
+.alc-timeline__item {
+  position: relative;
+}
+
+.alc-timeline__year {
+  font-family: var(--alc-font-mono);
+  color: var(--alc-ion-cyan);
+  font-size: 13px;
+}
+
+.alc-timeline__item p {
+  color: var(--alc-slate);
+  margin-top: 4px;
+}
+
+
+/* ============================================================
+   TECHNICAL LIBRARY
+   ============================================================ */
+
+.alc-library-filter {
+  margin: 24px 0;
+  max-width: 240px;
+}
+
+.alc-library-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.alc-library-card__meta {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.alc-library-card__date {
+  color: var(--alc-slate);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+
+
+/* ============================================================
+   NOVA CHAT MESSAGES
+   ============================================================ */
+
+.alc-nova-message {
+  max-width: 85%;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.alc-nova-message p {
+  margin: 0;
+}
+
+.alc-nova-message--user {
+  margin-left: auto;
+  background: var(--alc-andromeda-violet);
+  color: var(--alc-signal-white);
+}
+
+.alc-nova-message--assistant {
+  margin-right: auto;
+  background: var(--alc-void-black);
+  color: var(--alc-signal-white);
+  border: 1px solid rgba(138, 147, 184, 0.2);
+}
+
+.alc-nova-message--thinking p {
+  color: var(--alc-slate);
+  font-style: italic;
+}
+
+.alc-nova-citations {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alc-nova-citation {
+  font-size: 12px;
+  color: var(--alc-ion-cyan);
+}
+
+
+/* ============================================================
+   HERO CAROUSEL (auto-rotating, segmented progress bar)
+   ============================================================ */
+
+.alc-hero-carousel {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.alc-hero-carousel__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.alc-hero-carousel__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.alc-hero-carousel__gradient {
+  width: 100%;
+  height: 100%;
+}
+
+.alc-hero-carousel__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 7, 13, 0.55) 0%, rgba(5, 7, 13, 0.85) 100%);
+}
+
+.alc-hero-carousel__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 64px 24px;
+}
+
+.alc-hero-carousel__content h1 {
+  font-size: var(--alc-fs-display-l);
+  max-width: 900px;
+  margin: 0 auto 16px;
+}
+
+.alc-hero-carousel__progress {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  gap: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.alc-hero-carousel__segment {
+  flex: 1;
+  height: 3px;
+  background: rgba(245, 247, 255, 0.25);
+  border: none;
+  border-radius: 2px;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.alc-hero-carousel__fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--alc-signal-white);
+}
+
+.alc-hero-carousel__fill--complete {
+  width: 100%;
+}
+
+.alc-hero-carousel__fill--active {
+  animation: alc-hero-fill linear forwards;
+}
+
+@keyframes alc-hero-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@media (max-width: 640px) {
+  .alc-hero-carousel {
+    min-height: 460px;
+  }
+  .alc-hero-carousel__content h1 {
+    font-size: 28px;
+  }
+  .alc-hero-carousel__progress {
+    max-width: 100%;
+  }
+}
+
+.alc-intro-block {
+  text-align: center;
+  padding: 64px 24px 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.alc-intro-block h2 {
+  font-size: var(--alc-fs-display-l);
+  margin-bottom: 16px;
+}
+
+.alc-intro-block p {
+  color: var(--alc-slate);
+}
+
+@media (max-width: 640px) {
+  .alc-intro-block {
+    padding: 40px 16px 0;
+  }
+  .alc-intro-block h2 {
+    font-size: 28px;
+  }
+}
